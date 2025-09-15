@@ -3,12 +3,13 @@ from bs4 import BeautifulSoup
 import csv
 from urllib.parse import parse_qs, urlparse, urljoin
 import re
-from typing import Any
+from typing import Any,List
 import signal
 
 
 type URL = str
 type Domain = str
+type Link = str
 UserAgents = {
     "1" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36", #pc
     "2" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0", #pc
@@ -68,7 +69,7 @@ def is_page(url:URL, extra_patterns: list[str] = None) -> bool:
     return False
 
 
-def scrape(url:URL, domain:Domain) -> tuple[dict[str, Any], list] | None:
+def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any], list] | None:
     '''
     page_data contains 
 
@@ -92,11 +93,14 @@ def scrape(url:URL, domain:Domain) -> tuple[dict[str, Any], list] | None:
             return None, []
     except KeyError:
         print("check UserAgent Dict !!!")
+
     except requests.exceptions.ConnectionError:
         print(f"Failed to Connect")
         return None, []
 
 
+  
+    
     soup = BeautifulSoup(response.text, 'html.parser')
 
     page_data = {'URL': url, "status": response.status_code}
@@ -108,6 +112,7 @@ def scrape(url:URL, domain:Domain) -> tuple[dict[str, Any], list] | None:
     })
 
     links = []
+
     # Note that some links will be revealed if you preform a certain action for example loggin in as Admin will reveal Admin Dash link 
 
     for a in soup.find_all('a', href=True):
@@ -115,10 +120,15 @@ def scrape(url:URL, domain:Domain) -> tuple[dict[str, Any], list] | None:
         if (get_domain(link) == domain and '#' not in link):
             links.append(link)
 
+    for media in soup.find_all(src=True):
+        link = check_url(urljoin(url, media['src']))
+        if (get_domain(link) == domain and '#' not in link and ".js" not in link): #js files are excluded
+            media_li.append(link)
+
     return page_data, links
 
 def main():   
-    
+    media = []
     # Handle graceful exit on Ctrl+C
     def exit_gracefully(signum, frame):
         print("\nExiting gracefully...")
@@ -156,7 +166,7 @@ def main():
         if is_page(current_url):
             continue
 
-        page_data, links = scrape(current_url, domain)
+        page_data, links = scrape(current_url, domain, media)
         if page_data:
             all_headers.update(page_data.keys())
             
