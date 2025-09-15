@@ -5,7 +5,7 @@ from urllib.parse import parse_qs, urlparse, urljoin
 import re
 from typing import Any,List
 import signal
-
+from ssl import SSLCertVerificationError
 
 type URL = str
 type Domain = str
@@ -93,7 +93,19 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
             return None, []
     except KeyError:
         print("check UserAgent Dict !!!")
+<<<<<<< HEAD
 
+=======
+        return None, []
+    
+    ### handling cert & connection Errors
+    except SSLCertVerificationError:
+        print("Certiface problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
+        return None, []
+    except requests.exceptions.SSLError:
+        print("Certiface problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
+        return None, []
+>>>>>>> 9b727f6743b018077fe296a35e8aab7502ad5cdc
     except requests.exceptions.ConnectionError:
         print(f"Failed to Connect")
         return None, []
