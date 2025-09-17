@@ -93,9 +93,6 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
             return None, []
     except KeyError:
         print("check UserAgent Dict !!!")
-<<<<<<< HEAD
-
-=======
         return None, []
     
     ### handling cert & connection Errors
@@ -105,7 +102,6 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
     except requests.exceptions.SSLError:
         print("Certiface problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
         return None, []
->>>>>>> 9b727f6743b018077fe296a35e8aab7502ad5cdc
     except requests.exceptions.ConnectionError:
         print(f"Failed to Connect")
         return None, []
