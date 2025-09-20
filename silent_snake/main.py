@@ -137,9 +137,22 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
 
 def main():   
     media = []
+    def media_output(media=media):
+        """
+        Print discovered media links
+        """
+        if len(media) > 0:
+            print("Also found: ")
+            for m in media:
+                print(m)
+
+
     # Handle graceful exit on Ctrl+C
     def exit_gracefully(signum, frame):
+        media_output()
         print("\nExiting gracefully...")
+
+
         # Perform collective tasks here if needed
         exit(0)
     signal.signal(signal.SIGINT, exit_gracefully)
@@ -187,6 +200,7 @@ def main():
                     to_visit.add(link)
     print(f"found : {len(visited)} urls in {domain}")
     print("No more Urls")
+    media_output()
     
 
 
