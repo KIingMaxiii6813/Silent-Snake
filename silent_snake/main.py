@@ -6,6 +6,7 @@ import re
 from typing import Any,List
 import signal
 from ssl import SSLCertVerificationError
+from server import details
 
 type URL = str
 type Domain = str
@@ -170,8 +171,10 @@ def main():
         exit(0)
     output = input("do you want data output?(Y/n)").lower()
 
-    start_url = check_url(input_url)
     
+    start_url = check_url(input_url)
+    server = details.Server(get_domain(start_url).replace("https://","").replace("http://",""))
+    print(server)
 
     domain = get_domain(start_url)
     visited = []
