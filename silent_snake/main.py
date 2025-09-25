@@ -98,10 +98,10 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
     
     ### handling cert & connection Errors
     except SSLCertVerificationError:
-        print("Certiface problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
+        print("Certificate problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
         return None, []
     except requests.exceptions.SSLError:
-        print("Certiface problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
+        print("Certificate problem \n use 'response = requests.get(url, headers=headers, verify=False)' (NOT RECOMMENDED)")
         return None, []
     except requests.exceptions.ConnectionError:
         print(f"Failed to Connect")
