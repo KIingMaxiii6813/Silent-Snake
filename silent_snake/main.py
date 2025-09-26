@@ -137,15 +137,30 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
     return page_data, links
 
 def main():   
+
+    input_url = input("Enter the URL(http/https is optional , default = https): ")
+    
+    if input_url == "":
+        print("???")
+        exit(0)
+
+    output = input("do you want data output?(Y/n) ").lower()
+
+    
+    start_url = check_url(input_url)
+
     media = []
-    def media_output(media=media):
+  
+    
+    def media_output(media=media,output=output):
         """
         Print discovered media links
         """
-        if len(media) > 0:
-            print("Also found: ")
-            for m in media:
-                print(m)
+        if output == "" or output == "y":
+            if len(media) > 0:
+                print("Also found: ")
+                for m in media:
+                    print(m)
 
 
     # Handle graceful exit on Ctrl+C
@@ -165,16 +180,7 @@ def main():
         except:
             return str + "..."
     
-    input_url = input("Enter the URL(http/https is optional , default = https): ")
     
-    if input_url == "":
-        print("???")
-        exit(0)
-
-    output = input("do you want data output?(Y/n) ").lower()
-
-    
-    start_url = check_url(input_url)
 
     ### Get and print details about the server and technologies used ###
     server_details = server.Server(get_domain(start_url).replace("https://","").replace("http://",""))
@@ -209,7 +215,9 @@ def main():
                     to_visit.add(link)
     print(f"found : {len(visited)} urls in {domain}")
     print("No more Urls")
-    media_output()
+
+    if output == "" or output == "y":
+        media_output()
     
 
 
