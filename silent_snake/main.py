@@ -131,7 +131,7 @@ def scrape(url:URL, domain:Domain, media_li:List[Link]) -> tuple[dict[str, Any],
 
     for media in soup.find_all(src=True):
         link = check_url(urljoin(url, media['src']))
-        if (get_domain(link) == domain and '#' not in link and ".js" not in link): #js files are excluded
+        if (get_domain(link) == domain and not re.search(r"(.svg|.js|.gif|#)",link)): #js and svg files are excluded
             media_li.append(link)
 
     return page_data, links
@@ -166,16 +166,22 @@ def main():
             return str + "..."
     
     input_url = input("Enter the URL(http/https is optional , default = https): ")
+    
     if input_url == "":
         print("???")
         exit(0)
-    output = input("do you want data output?(Y/n)").lower()
+
+    output = input("do you want data output?(Y/n) ").lower()
 
     
     start_url = check_url(input_url)
+
+    ### Get and print details about the server and technologies used ###
     server_details = server.Server(get_domain(start_url).replace("https://","").replace("http://",""))
     print(server_details)
     print(techs.UiFrameworks(requests.get(start_url, headers={'User-Agent': UserAgents["1"]})))
+    
+
     domain = get_domain(start_url)
     visited = []
     to_visit = {start_url}
